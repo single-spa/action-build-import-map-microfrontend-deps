@@ -1,0 +1,32 @@
+{
+  "name": "action-build-import-map-microfrontend-deps",
+  "version": "1.0.0",
+  "description": "Github action to build import-map-microfrontend-deps",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "ncc build src/index.js --license LICENSE",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "single-spa"
+  ],
+  "author": "Joel Denning",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.2",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "pretty-quick": "^4.0.0",
+    "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@single-spa/import-map-microfrontend-deps": "^1.0.0",
+    "@single-spa/import-map-microfrontend-utils": "^2.0.0"
+  }
+}

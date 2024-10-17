@@ -1,0 +1,15 @@
+name: "Deploy to import-map-deployer"
+description: "Deploy a microfrontend or import map via import-map-deployer"
+inputs:
+  import-map-template:
+    description: "The file path to an import map template file"
+    required: true
+  output-folder:
+    description: "The name of the output folder"
+    required: true
+  base-origin:
+    description: "The base URL that the dependencies will be hosted on. For example, https://cdn.example.com"
+    required: true
+runs:
+  using: "node20"
+  main: "dist/index.js"
