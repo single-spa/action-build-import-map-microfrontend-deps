@@ -1,5 +1,5 @@
 import { getInput } from "@actions/core";
-import fs from "node:fs/promises";
+import fs from "fs/promises";
 import { buildImportMapDependencies } from "@single-spa/import-map-microfrontend-deps";
 import { ImportMapMicrofrontendUtils } from "@single-spa/import-map-microfrontend-utils";
 

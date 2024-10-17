@@ -57248,6 +57248,13 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
 
 /***/ }),
 
+/***/ 91943:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs/promises");
+
+/***/ }),
+
 /***/ 58611:
 /***/ ((module) => {
 
@@ -57287,13 +57294,6 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("net");
 /***/ ((module) => {
 
 module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:events");
-
-/***/ }),
-
-/***/ 51455:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:fs/promises");
 
 /***/ }),
 
@@ -59043,7 +59043,7 @@ module.exports = parseParams
 
 /***/ }),
 
-/***/ 60069:
+/***/ 74305:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 
@@ -64562,8 +64562,8 @@ function detectDefaultProvider(defaultProvider, inputMap, resolver) {
 
 
 
-// EXTERNAL MODULE: external "node:fs/promises"
-var promises_ = __nccwpck_require__(51455);
+;// CONCATENATED MODULE: external "node:fs/promises"
+const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:fs/promises");
 ;// CONCATENATED MODULE: external "node:path"
 const external_node_path_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:path");
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@single-spa+import-map-microfrontend-deps@1.0.0/node_modules/@single-spa/import-map-microfrontend-deps/lib/import-map-microfrontend-deps.js
@@ -64610,8 +64610,8 @@ async function buildImportMapDependencies(options) {
     const importMapString = JSON.stringify(finalMap, null, 2).replace(/https:\/\/ga.jspm.io\//g, options.utils.getDependenciesURLPrefix());
     console.log(importMapString);
     // Write final import map
-    await (0,promises_.mkdir)(options.outputFolder, { recursive: true });
-    await (0,promises_.writeFile)(`${options.outputFolder}/deps.importmap`, importMapString, "utf-8");
+    await (0,promises_namespaceObject.mkdir)(options.outputFolder, { recursive: true });
+    await (0,promises_namespaceObject.writeFile)(`${options.outputFolder}/deps.importmap`, importMapString, "utf-8");
     const downloadedUrls = [];
     for (let url in finalMap.integrity) {
         if (downloadedUrls.includes(url)) {
@@ -64622,8 +64622,8 @@ async function buildImportMapDependencies(options) {
         if (r.ok) {
             const filePath = `./${options.outputFolder}/${options.utils.getDependenciesFolderName()}/${url.replace("https://ga.jspm.io/", "")}`;
             const dir = (0,external_node_path_namespaceObject.dirname)(filePath);
-            await (0,promises_.mkdir)(dir, { recursive: true });
-            await (0,promises_.writeFile)(filePath, await r.text(), "utf-8");
+            await (0,promises_namespaceObject.mkdir)(dir, { recursive: true });
+            await (0,promises_namespaceObject.writeFile)(filePath, await r.text(), "utf-8");
             downloadedUrls.push(url);
         }
         else {
@@ -64676,8 +64676,8 @@ class ImportMapMicrofrontendUtils {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(84708);
-/* harmony import */ var node_fs_promises__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(51455);
-/* harmony import */ var _single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(60069);
+/* harmony import */ var fs_promises__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(91943);
+/* harmony import */ var _single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(74305);
 /* harmony import */ var _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(76805);
 
 
@@ -64688,7 +64688,7 @@ const templatePath = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("im
 
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
-  template: await node_fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFileSync(templatePath, "utf-8"),
+  template: await fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFileSync(templatePath, "utf-8"),
   utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),
