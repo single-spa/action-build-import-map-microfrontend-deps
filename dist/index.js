@@ -57248,13 +57248,6 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
 
 /***/ }),
 
-/***/ 91943:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs/promises");
-
-/***/ }),
-
 /***/ 58611:
 /***/ ((module) => {
 
@@ -64676,7 +64669,7 @@ class ImportMapMicrofrontendUtils {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(84708);
-/* harmony import */ var fs_promises__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(91943);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(79896);
 /* harmony import */ var _single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(74305);
 /* harmony import */ var _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(76805);
 
@@ -64684,11 +64677,13 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 
+const { readFileSync } = fs__WEBPACK_IMPORTED_MODULE_1__.promises;
+
 const templatePath = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("import-map-template");
 
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
-  template: await (0,fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFileSync)(templatePath, "utf-8"),
+  template: await readFileSync(templatePath, "utf-8"),
   utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),

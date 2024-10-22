@@ -1,7 +1,9 @@
 import { getInput } from "@actions/core";
-import { readFileSync } from "fs/promises";
+import fs from "fs";
 import { buildImportMapDependencies } from "@single-spa/import-map-microfrontend-deps";
 import { ImportMapMicrofrontendUtils } from "@single-spa/import-map-microfrontend-utils";
+
+const { readFileSync } = fs.promises;
 
 const templatePath = getInput("import-map-template");
 
