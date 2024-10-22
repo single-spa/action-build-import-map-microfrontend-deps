@@ -7,7 +7,7 @@ const templatePath = getInput("import-map-template");
 
 await buildImportMapDependencies({
   outputFolder: getInput("output-folder"),
-  template: await fs.readFileSync(templatePath, "utf-8"),
+  template: await fs.readFile(templatePath, "utf-8"),
   utils: new ImportMapMicrofrontendUtils({
     baseOrigin: getInput("base-origin"),
   }),
