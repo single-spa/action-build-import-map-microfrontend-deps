@@ -2022,7 +2022,7 @@ Object.defineProperty(module, 'exports', {
 
 /***/ }),
 
-/***/ 8453:
+/***/ 13467:
 /***/ ((module) => {
 
 function BrowserslistError(message) {
@@ -2041,7 +2041,7 @@ module.exports = BrowserslistError
 
 /***/ }),
 
-/***/ 58999:
+/***/ 20265:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var jsReleases = __webpack_require__(84669)
@@ -2050,9 +2050,9 @@ var e2c = __webpack_require__(661)
 var jsEOL = __webpack_require__(53203)
 var path = __webpack_require__(16928)
 
-var BrowserslistError = __webpack_require__(8453)
-var env = __webpack_require__(67463)
-var parse = __webpack_require__(54160) // Will load browser.js in webpack
+var BrowserslistError = __webpack_require__(13467)
+var env = __webpack_require__(23217)
+var parse = __webpack_require__(77134) // Will load browser.js in webpack
 
 var YEAR = 365.259641 * 24 * 60 * 60 * 1000
 var ANDROID_EVERGREEN_FIRST = '37'
@@ -3264,7 +3264,7 @@ module.exports = browserslist
 
 /***/ }),
 
-/***/ 67463:
+/***/ 23217:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var feature = (__webpack_require__(56488)["default"])
@@ -3272,12 +3272,11 @@ var region = (__webpack_require__(39748)["default"])
 var fs = __webpack_require__(79896)
 var path = __webpack_require__(16928)
 
-var BrowserslistError = __webpack_require__(8453)
+var BrowserslistError = __webpack_require__(13467)
 
 var IS_SECTION = /^\s*\[(.+)]\s*$/
 var CONFIG_PATTERN = /^browserslist-config-/
 var SCOPED_CONFIG__PATTERN = /@[^/]+(?:\/[^/]+)?\/browserslist-config(?:-|$|\/)/
-var TIME_TO_UPDATE_CANIUSE = 6 * 30 * 24 * 60 * 60 * 1000
 var FORMAT =
   'Browserslist config should be a string or an array ' +
   'of strings with browser queries'
@@ -3416,6 +3415,16 @@ function latestReleaseTime(agents) {
   return latest * 1000
 }
 
+function getMonthsPassed(date) {
+  var now = new Date()
+  var past = new Date(date)
+
+  var years = now.getFullYear() - past.getFullYear()
+  var months = now.getMonth() - past.getMonth()
+
+  return years * 12 + months
+}
+
 function normalizeStats(data, stats) {
   if (!data) {
     data = {}
@@ -3459,7 +3468,7 @@ module.exports = {
     if (!ctx.dangerousExtend && !process.env.BROWSERSLIST_DANGEROUS_EXTEND) {
       checkExtend(name)
     }
-    var queries = __WEBPACK_EXTERNAL_createRequire(import.meta.url)(__webpack_require__(92278).resolve(name, { paths: ['.', ctx.path] }))
+    var queries = __WEBPACK_EXTERNAL_createRequire(import.meta.url)(__webpack_require__(50440).resolve(name, { paths: ['.', ctx.path] }))
     if (queries) {
       if (Array.isArray(queries)) {
         return queries
@@ -3480,7 +3489,7 @@ module.exports = {
     if (!ctx.dangerousExtend && !process.env.BROWSERSLIST_DANGEROUS_EXTEND) {
       checkExtend(name)
     }
-    var stats = __WEBPACK_EXTERNAL_createRequire(import.meta.url)(__webpack_require__(92278).resolve(
+    var stats = __WEBPACK_EXTERNAL_createRequire(import.meta.url)(__webpack_require__(50440).resolve(
       path.join(name, 'browserslist-stats.json'),
       { paths: ['.'] }
     ))
@@ -3685,11 +3694,14 @@ module.exports = {
     if (process.env.BROWSERSLIST_IGNORE_OLD_DATA) return
 
     var latest = latestReleaseTime(agentsObj)
-    var halfYearAgo = Date.now() - TIME_TO_UPDATE_CANIUSE
+    var monthsPassed = getMonthsPassed(latest)
 
-    if (latest !== 0 && latest < halfYearAgo) {
+    if (latest !== 0 && monthsPassed >= 6) {
+      var months = monthsPassed + ' ' + (monthsPassed > 1 ? 'months' : 'month')
       console.warn(
-        'Browserslist: caniuse-lite is outdated. Please run:\n' +
+        'Browserslist: browsers data (caniuse-lite) is ' +
+          months +
+          ' old. Please run:\n' +
           '  npx update-browserslist-db@latest\n' +
           '  Why you should do it regularly: ' +
           'https://github.com/browserslist/update-db#readme'
@@ -3707,7 +3719,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 54160:
+/***/ 77134:
 /***/ ((module) => {
 
 var AND_REGEXP = /^\s+and\s+(.*)/i
@@ -21348,7 +21360,7 @@ Object.defineProperty(exports, "unreleasedLabels", ({
     return _targets.unreleasedLabels;
   }
 }));
-var _browserslist = __webpack_require__(58999);
+var _browserslist = __webpack_require__(20265);
 var _helperValidatorOption = __webpack_require__(5463);
 var _nativeModules = __webpack_require__(66235);
 var _lruCache = __webpack_require__(14960);

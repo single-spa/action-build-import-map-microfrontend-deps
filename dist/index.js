@@ -59043,7 +59043,7 @@ module.exports = parseParams
 
 /***/ }),
 
-/***/ 60069:
+/***/ 77750:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 
@@ -59809,7 +59809,7 @@ function setBabel$1(_babel) {
     babel$1 = _babel;
 }
 async function createCjsAnalysis(imports, source, url) {
-    if (!babel$1) babel$1 = await Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(554)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 51210, 19));
+    if (!babel$1) babel$1 = await Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(692)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 51210, 19));
     const requires = new Set();
     const lazy = new Set();
     const unboundGlobals = new Set();
@@ -59970,8 +59970,8 @@ const dummyConsole = {
 };
 async function createTsAnalysis(source, url) {
     if (!babel) [babel, { default: babelPresetTs }, { default: babelPluginImportAttributes }] = await Promise.all([
-        Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(554)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 51210, 19)),
-        Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(554)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 8028, 19)),
+        Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(692)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 51210, 19)),
+        Promise.all(/* import() */[__nccwpck_require__.e(210), __nccwpck_require__.e(692)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 8028, 19)),
         __nccwpck_require__.e(/* import() */ 556).then(__nccwpck_require__.t.bind(__nccwpck_require__, 57556, 19))
     ]);
     const imports = new Set();
@@ -64566,7 +64566,7 @@ function detectDefaultProvider(defaultProvider, inputMap, resolver) {
 var promises_ = __nccwpck_require__(51455);
 ;// CONCATENATED MODULE: external "node:path"
 const external_node_path_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:path");
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@single-spa+import-map-microfrontend-deps@1.0.0/node_modules/@single-spa/import-map-microfrontend-deps/lib/import-map-microfrontend-deps.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@single-spa+import-map-microfrontend-deps@1.0.1/node_modules/@single-spa/import-map-microfrontend-deps/lib/import-map-microfrontend-deps.js
 
 
 
@@ -64577,7 +64577,7 @@ async function buildImportMapDependencies(options) {
     };
     const importMapGenerator = new Generator(generatorOptions);
     // Install shared dependencies into import map
-    console.log("Creating import map");
+    console.log("Creating import map from template", template);
     for (const importMapKey in template.imports) {
         await importMapGenerator.install(processImportMapEntry(importMapKey, template.imports[importMapKey]));
     }
@@ -64590,6 +64590,9 @@ async function buildImportMapDependencies(options) {
         scopeGenerators[microfrontendName] = scopeGenerator;
     }
     const finalMap = importMapGenerator.getMap();
+    if (!finalMap.imports) {
+        finalMap.imports = {};
+    }
     if (!finalMap.scopes) {
         finalMap.scopes = {};
     }
@@ -64677,7 +64680,7 @@ class ImportMapMicrofrontendUtils {
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(84708);
 /* harmony import */ var node_fs_promises__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(51455);
-/* harmony import */ var _single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(60069);
+/* harmony import */ var _single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(77750);
 /* harmony import */ var _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(76805);
 
 
