@@ -64688,7 +64688,7 @@ const templatePath = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("im
 
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
-  template: await fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFileSync(templatePath, "utf-8"),
+  template: await (0,fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFileSync)(templatePath, "utf-8"),
   utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),
