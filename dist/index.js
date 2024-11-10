@@ -64689,9 +64689,25 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 const templatePath = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("import-map-template");
 
+let templateStr, templateJson;
+
+try {
+  templateStr = await node_fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFile(templatePath, "utf-8");
+} catch (err) {
+  console.error(err);
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(`Unable to read import-map-template from filePath '${templatePath}'`);
+}
+
+try {
+  templateJson = JSON.parse(templateStr);
+} catch (err) {
+  console.error(err);
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(`import map template at file path '${templatePath}' does not contain valid JSON`);
+}
+
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
-  template: await node_fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFile(templatePath, "utf-8"),
+  template: templateJson,
   utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),
