@@ -64695,14 +64695,18 @@ try {
   templateStr = await node_fs_promises__WEBPACK_IMPORTED_MODULE_1__.readFile(templatePath, "utf-8");
 } catch (err) {
   console.error(err);
-  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(`Unable to read import-map-template from filePath '${templatePath}'`);
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(
+    `Unable to read import-map-template from filePath '${templatePath}'`,
+  );
 }
 
 try {
   templateJson = JSON.parse(templateStr);
 } catch (err) {
   console.error(err);
-  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(`import map template at file path '${templatePath}' does not contain valid JSON`);
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(
+    `import map template at file path '${templatePath}' does not contain valid JSON`,
+  );
 }
 
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
