@@ -64709,10 +64709,16 @@ try {
   );
 }
 
+class Utils extends _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R {
+  getDependenciesFolderName() {
+    return (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("dependencies-folder") ?? super.getDependenciesFolderName();
+  }
+}
+
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
   template: templateJson,
-  utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
+  utils: new Utils({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),
 });
