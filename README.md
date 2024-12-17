@@ -19,4 +19,5 @@ See [action.yml](/action.yml) for a list of all required and optional inputs
     import-map-template: importmap-template.json
     output-folder: dist
     base-origin: https://react.microfrontends.app
+    dependencies-folder: deps
 ```
