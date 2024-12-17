@@ -59683,7 +59683,7 @@ function setBabel$1(_babel) {
     babel$1 = _babel;
 }
 async function createCjsAnalysis(imports, source, url) {
-    if (!babel$1) babel$1 = await Promise.all(/* import() */[__nccwpck_require__.e(756), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 61756, 19));
+    if (!babel$1) babel$1 = await Promise.all(/* import() */[__nccwpck_require__.e(191), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 61756, 19));
     const requires = new Set();
     const lazy = new Set();
     const unboundGlobals = new Set();
@@ -59844,8 +59844,8 @@ const dummyConsole = {
 };
 async function createTsAnalysis(source, url) {
     if (!babel) [babel, { default: babelPresetTs }, { default: babelPluginImportAttributes }] = await Promise.all([
-        Promise.all(/* import() */[__nccwpck_require__.e(756), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 61756, 19)),
-        Promise.all(/* import() */[__nccwpck_require__.e(756), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 26790, 19)),
+        Promise.all(/* import() */[__nccwpck_require__.e(191), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 61756, 19)),
+        Promise.all(/* import() */[__nccwpck_require__.e(191), __nccwpck_require__.e(634)]).then(__nccwpck_require__.t.bind(__nccwpck_require__, 26790, 19)),
         __nccwpck_require__.e(/* import() */ 82).then(__nccwpck_require__.t.bind(__nccwpck_require__, 27082, 19))
     ]);
     const imports = new Set();
@@ -64591,10 +64591,16 @@ try {
   );
 }
 
+class Utils extends _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R {
+  getDependenciesFolderName() {
+    return (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("dependencies-folder") ?? super.getDependenciesFolderName();
+  }
+}
+
 await (0,_single_spa_import_map_microfrontend_deps__WEBPACK_IMPORTED_MODULE_2__/* .buildImportMapDependencies */ .b)({
   outputFolder: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("output-folder"),
   template: templateJson,
-  utils: new _single_spa_import_map_microfrontend_utils__WEBPACK_IMPORTED_MODULE_3__/* .ImportMapMicrofrontendUtils */ .R({
+  utils: new Utils({
     baseOrigin: (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("base-origin"),
   }),
 });

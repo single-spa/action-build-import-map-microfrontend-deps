@@ -7,6 +7,9 @@ inputs:
   output-folder:
     description: "The name of the output folder"
     required: true
+  dependencies-folder:
+    description: "The name of the subdirectory that contains the dependencies. 'deps' is most common"
+    required: true
   base-origin:
     description: "The base URL that the dependencies will be hosted on. For example, https://cdn.example.com"
     required: true

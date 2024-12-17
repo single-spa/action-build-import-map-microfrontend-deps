@@ -25,10 +25,16 @@ try {
   );
 }
 
+class Utils extends ImportMapMicrofrontendUtils {
+  getDependenciesFolderName() {
+    return getInput("dependencies-folder") ?? super.getDependenciesFolderName();
+  }
+}
+
 await buildImportMapDependencies({
   outputFolder: getInput("output-folder"),
   template: templateJson,
-  utils: new ImportMapMicrofrontendUtils({
+  utils: new Utils({
     baseOrigin: getInput("base-origin"),
   }),
 });
